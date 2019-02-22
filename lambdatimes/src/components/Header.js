@@ -24,35 +24,37 @@ const Wrapper = styled.header`
   text-align: center;
   color: #000;
   }
-  span {
+
+@media (min-width: 1280px) {
+    width: 1280px;
+}
+`;
+
+const Date = styled.span`
   align-self: flex-end;
   font-size: 11px;
   font-weight: bold;
   letter-spacing: 1px;
-  }
-  .date {
   margin-left: 25px;
   flex: 1;
-  }
-  .temp {
+`;
+
+const Temp = styled.span`
   text-align: right;
   margin-right: 25px;
   flex: 1;
-  }
-  
-@media (min-width: 1280px) {
-  .header {
-    width: 1280px;
-  }
-}
+  align-self: flex-end;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
 `;
 
 const Header = () => {
   return (
     <Wrapper>
-      <span className="date">SMARCH 32, 2018</span>
+      <Date>SMARCH 32, 2018</Date>
       <h1>Lambda Times</h1>
-      <span className="temp">98°</span>
+      <Temp>98°</Temp>
     </Wrapper>
   )
 }
