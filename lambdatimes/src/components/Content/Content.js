@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import Tabs from './Tabs';
 import Cards from './Cards';
@@ -8,8 +7,8 @@ import Cards from './Cards';
 import { tabData, cardData } from '../../data';
 
 export default class Content extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       selected: 'all',
       tabs: [],
@@ -65,21 +64,4 @@ export default class Content extends Component {
       </div>
     );
   }
-}
-Content.propTypes = {
-  selectedTab: PropTypes.string,
-  selectTabHandler: PropTypes.func,
-  tabs: PropTypes.arrayOf(PropTypes.string),
-  cards: PropTypes.shape({
-    headline: PropTypes.string,
-    tab: PropTypes.string,
-    img: PropTypes.string,
-    author: PropTypes.string,
-  }),
-}
-
-Content.defaultProps = {
-  selectedTab: 'all',
-  tabs: [],
-  cards: {},
 }
