@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Tabs from './Tabs';
 import Cards from './Cards';
@@ -26,7 +27,7 @@ export default class Content extends Component {
 
   changeSelected = tab => {
     // this function should take in the tab and update the state with the new tab.
-
+    this.setState({selected:tab.target.id});
   };
 
   filterCards = () => {
@@ -42,7 +43,9 @@ export default class Content extends Component {
           of the items from cardData. 
         - else, it should only return those cards whose 'tab' matched this.state.selected.
     */
-    return this.state.cards;
+    return this.state.cards.filter(card => {
+      return this.state.selected === 'all' ? card : card.tab === this.state.selected
+    });
   };
 
   render() {
@@ -62,4 +65,21 @@ export default class Content extends Component {
       </div>
     );
   }
+}
+Content.propTypes = {
+  selectedTab: PropTypes.string,
+  selectTabHandler: PropTypes.func,
+  tabs: PropTypes.arrayOf(PropTypes.string),
+  cards: PropTypes.shape({
+    headline: PropTypes.string,
+    tab: PropTypes.string,
+    img: PropTypes.string,
+    author: PropTypes.string,
+  }),
+}
+
+Content.defaultProps = {
+  selectedTab: 'all',
+  tabs: [],
+  cards: {},
 }
